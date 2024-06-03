@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Context } from "./Context";
+import { useState, useEffect, React } from "react";
+import InputTxt from "./Components/InputTxt";
 
 function App() {
+  const [context, setContext] = useState([""]);
+  useEffect(() => {
+    setContext((newVal) => {
+      console.log(newVal);
+      context?.concat(newVal);
+      console.log(`new context:${context}`);
+    });
+  }, [context]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="text-center">Fizz Buzz App</h1>
+      <hr />
+      <Context.Provider value={[context, setContext]}>
+        <InputTxt />
+      </Context.Provider>
     </div>
   );
 }
