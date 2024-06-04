@@ -24,7 +24,7 @@ export default function InputTxt() {
           Submit
         </Button>
       </div>
-      <p>{JSON.stringify(context)}</p>
+      {/* <p>{JSON.stringify(context)}</p> */}
     </>
   );
 }
